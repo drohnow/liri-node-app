@@ -1,4 +1,6 @@
 var request = require("request");
+var twitter = require('twitter');
+var twitterKeys = require("./keys.js")
 
 var liri_Programs = process.argv[2];
 var userInput = process.argv[3];
