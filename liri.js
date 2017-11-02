@@ -1,12 +1,12 @@
 var request = require("request");
-var twitter = require('twitter');
+var Twitter = require('twitter');
 var twitterKeys = require("./keys.js")
 
 var liri_Programs = process.argv[2];
 var userInput = process.argv[3];
 
 
-
+//
 function movieThis() {
 
 	var movieName = userInput;
@@ -47,13 +47,30 @@ function movieThis() {
 
 
 	});
-
+// end of function movieThis() //
 }
 
 
+//start of function myTweets() //
+function myTweets() {
+  var client = new Twitter(twitterKeys);
+  
+  var params = {screen_name: 'Liri15_Twit'};
+  client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    if (!error) {
 
+      var tweeters = tweets;
+      var x = 0
 
+      for (i = 0; i < 20; i++ ) {
+      	    x = ++x
+      	    console.log(x + ") " + tweeters[i].text + " " + "===> Tweet was created on: " + tweeters[i].created_at + "\n");
+      }
 
+    }
+  });
+ //end of function myTweets() //
+ } 
 
 
 
