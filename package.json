@@ -1,0 +1,25 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "LIRI is a command line NodeJS application that takes in the following parameters: 1) my-tweets, 2) spotify-this-song <'songName'>, 3) movie-this <'movie_name'>, 4) do-what-it-says <reads random.txt>",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drohnow/liri-node-app.git"
+  },
+  "author": "David Rohnow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drohnow/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/drohnow/liri-node-app#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  }
+}
