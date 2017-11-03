@@ -1,22 +1,11 @@
+//Liri Program Initial Variables //
 var request = require("request");
 var fs = require('fs');
 var Twitter = require('twitter');
 var twitterKeys = require("./keys.js")
 var Spotify = require('node-spotify-api');
-
-
 var liri_Programs = process.argv[2];
-
-
-if (process.argv[3] === undefined) {
-	var userInput = undefined
-	//console.log(userInput)
-}
-else {
-	var userInput = process.argv.slice(3).join(" ");
-	console.log(userInput)
-}
-
+var userInput = process.argv.slice(3).join(" ");
 
 
 
@@ -82,8 +71,7 @@ function movieThis() {
 	          
 	       }
 
-	   		//fnRatings();
-
+	   		fnRatings();
 	  		}
 
 
@@ -124,9 +112,7 @@ function movieThis() {
 	          
 	       }
 
-	   //fnRatings();
-	   		//console.log(response)
-	   		//console.log(userInput)
+	   fnRatings();
 	  }
 
 

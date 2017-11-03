@@ -4,20 +4,19 @@ var Twitter = require('twitter');
 var twitterKeys = require("./keys.js")
 var Spotify = require('node-spotify-api');
 
+var consoleInputThree = process.argv[2]
+console.log("consoleInput = " + consoleInputThree)
 
-var liri_Programs = process.argv[2];
 
-
-if (process.argv[3] === undefined) {
-	var userInput = undefined
-	//console.log(userInput)
+if (consoleInputThree === "my-tweets") {
+	var liri_Programs = process.argv[2]
 }
 else {
+	var liri_Programs = process.argv[2];
 	var userInput = process.argv.slice(3).join(" ");
-	console.log(userInput)
 }
 
-
+ 
 
 
 
@@ -82,8 +81,7 @@ function movieThis() {
 	          
 	       }
 
-	   		//fnRatings();
-
+	   		fnRatings();
 	  		}
 
 
@@ -124,9 +122,7 @@ function movieThis() {
 	          
 	       }
 
-	   //fnRatings();
-	   		//console.log(response)
-	   		//console.log(userInput)
+	   fnRatings();
 	  }
 
 
@@ -199,35 +195,32 @@ function doWIS() {
     		return console.log("error, somwthing went wrong :(");
   		}
 
+  		var textInput = data
 
-  		if (data != "my-tweets") {
 
-	  		var dataSplit = data.split(",");
-
-	  		liri_Programs = dataSplit[0]
-			userInput = dataSplit[1]
-
-		} else {
-			liri_Programs = data.trim();
+  		if (textInput === "my-tweets") {
+  			//myTweets()
+  			console.log(data)
 		}
-
 		
-		if (liri_Programs === "spotify-this-song") {
+		else  {
+			var dataSplit = data.split(",");
+			var program = dataSplit[0];
+			var userInput = dataSplit[1];
 
-			spotifyThis(userInput);
+			if (program === "movie-this") {
+				movieThis(userInput)
+			}
+			else if  (program === "spotify-this-song") {
+				spotifyThis(userInput)
+			}
+			else {
+				console.log("Nothing To Do!")
+			}
+
+
 		}	
 
-		if (liri_Programs === "my-tweets") {
-
-			myTweets();
-		
-		}	
-
-		if (liri_Programs === "movie-this") {
-
-		
-				movieThis(userInput);
-		}
 
 
 

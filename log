@@ -1,0 +1,20 @@
+...this is loaded 
+
+spotify-this-song
+Name of Song: I Want It That Way
+Name of Band/Artist: Backstreet Boys
+Album Name: The Hits--Chapter One
+Preview URL: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=63ecefedb61d454aaf1c009d37da4df0
+TypeError: Cannot read property 'artists' of undefined
+    at /Users/drohnow/Desktop/projects/Liri/liri-node-app/liri.js:170:43
+    at tryCatcher (/Users/drohnow/Desktop/projects/Liri/liri-node-app/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/drohnow/Desktop/projects/Liri/liri-node-app/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/drohnow/Desktop/projects/Liri/liri-node-app/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/drohnow/Desktop/projects/Liri/liri-node-app/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/drohnow/Desktop/projects/Liri/liri-node-app/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/drohnow/Desktop/projects/Liri/liri-node-app/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/drohnow/Desktop/projects/Liri/liri-node-app/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/drohnow/Desktop/projects/Liri/liri-node-app/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:781:20)
+    at tryOnImmediate (timers.js:743:5)
+    at processImmediate [as _immediateCallback] (timers.js:714:5)
