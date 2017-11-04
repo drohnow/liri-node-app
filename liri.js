@@ -61,11 +61,11 @@ function movieThis() {
 	  	fs.appendFileSync("log.txt", "\n====================== LOG ENTRY START ====================\n")
 	    console.log("Title: " + JSON.parse(body).Title + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + 
 	    "\nYear: " + JSON.parse(body).Year + "\nCountry: " + JSON.parse(body).Country +
-	    "\nLanguage: " + JSON.parse(body).Language)
+	    "\nLanguage: " + JSON.parse(body).Language + "\nIMDB Rating: " + JSON.parse(body).Ratings[0].Value)
 
 	    fs.appendFileSync("log.txt", "Title: " + JSON.parse(body).Title + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + 
 	    "\nYear: " + JSON.parse(body).Year + "\nCountry: " + JSON.parse(body).Country +
-	    "\nLanguage: " + JSON.parse(body).Language)
+	    "\nLanguage: " + JSON.parse(body).Language + "\nIMDB Rating: " + JSON.parse(body).Ratings[0].Value + "\n")
 
 	      function fnRatings() {
 	        var ratings = JSON.parse(body).Ratings
@@ -112,12 +112,12 @@ function movieThis() {
 
 	    console.log("Title: " + JSON.parse(body).Title + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + 
 	    "\nYear: " + JSON.parse(body).Year + "\nCountry: " + JSON.parse(body).Country +
-	    "\nLanguage: " + JSON.parse(body).Language)
+	    "\nLanguage: " + JSON.parse(body).Language + "\nIMDB Rating: " + JSON.parse(body).Ratings[0].Value)
 
 
 	   fs.appendFileSync("log.txt", "Title: " + JSON.parse(body).Title + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + 
 	    "\nYear: " + JSON.parse(body).Year + "\nCountry: " + JSON.parse(body).Country +
-	    "\nLanguage: " + JSON.parse(body).Language)
+	    "\nLanguage: " + JSON.parse(body).Language + "\nIMDB Rating: " + JSON.parse(body).Ratings[0].Value + "\n")
 
 	      function fnRatings() {
 	        var ratings = JSON.parse(body).Ratings;
