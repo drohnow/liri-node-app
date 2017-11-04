@@ -10,16 +10,12 @@ var liri_Programs = process.argv[2];
 
 if (process.argv[3] === undefined) {
 	var userInput = undefined
-	//console.log(userInput)
+	
 }
 else {
 	var userInput = process.argv.slice(3).join(" ");
-	console.log(userInput)
+	//console.log(userInput)
 }
-
-
-
-
 
 
 //start of function myTweets() //
@@ -32,17 +28,20 @@ function myTweets() {
 
       var tweeters = tweets;
       var x = 0
-
+      fs.appendFileSync("log.txt", "\n====================== LOG ENTRY START ====================\n")
       for (i = 0; i < 20; i++ ) {
       	    x = ++x
       	    console.log(x + ") " + tweeters[i].text + " " + "===> Tweet was created on: " + tweeters[i].created_at + "\n");
+			
+			fs.appendFileSync("log.txt", x + ") " + tweeters[i].text + " " + "===> Tweet was created on: " + tweeters[i].created_at + "\n")
+			      
       }
-
+      fs.appendFileSync("log.txt", "=================== LOG ENTRY COMPLETE ===================\n")
     }
   });
  
  } 
- // end of function myTweets() //
+// end of function myTweets() //
 
 //start of function movieThis() //
 function movieThis() {
@@ -57,10 +56,14 @@ function movieThis() {
 
 		request(queryUrl, function(error, response, body) {
 
-	  	// If the request is successful
 	  	if (!error && response.statusCode === 200) {
 
+	  	fs.appendFileSync("log.txt", "\n====================== LOG ENTRY START ====================\n")
 	    console.log("Title: " + JSON.parse(body).Title + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + 
+	    "\nYear: " + JSON.parse(body).Year + "\nCountry: " + JSON.parse(body).Country +
+	    "\nLanguage: " + JSON.parse(body).Language)
+
+	    fs.appendFileSync("log.txt", "Title: " + JSON.parse(body).Title + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + 
 	    "\nYear: " + JSON.parse(body).Year + "\nCountry: " + JSON.parse(body).Country +
 	    "\nLanguage: " + JSON.parse(body).Language)
 
@@ -70,20 +73,23 @@ function movieThis() {
 	       for (i = 0; i < ratings.length; i++) {
 	        if (JSON.parse(body).Ratings[i].Source === "Rotten Tomatoes") {
 	          var x = JSON.parse(body).Ratings[i].Value;
-	          //console.log(x);
+	          
 	          console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[i].Value)
+	          fs.appendFileSync("log.txt", "Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[i].Value)
 	          
 	         } 
 
 	        }
 	        if (x === undefined) {
 	          console.log("Rotten Tomatoes Rating: None");
+	          fs.appendFileSync("log.txt", "Rotten Tomatoes Rating: None\n")
 	        }
 	          
 	       }
 
-	   		//fnRatings();
+	   	fnRatings();
 
+	   	fs.appendFileSync("log.txt", "\n====================== LOG ENTRY COMPLETE ==================\n");
 	  		}
 
 
@@ -102,31 +108,39 @@ function movieThis() {
 	  // If the request is successful
 	  if (!error && response.statusCode === 200) {
 
+	  	fs.appendFileSync("log.txt", "\n====================== LOG ENTRY START ====================\n");
+
 	    console.log("Title: " + JSON.parse(body).Title + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + 
 	    "\nYear: " + JSON.parse(body).Year + "\nCountry: " + JSON.parse(body).Country +
 	    "\nLanguage: " + JSON.parse(body).Language)
 
+
+	   fs.appendFileSync("log.txt", "Title: " + JSON.parse(body).Title + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + 
+	    "\nYear: " + JSON.parse(body).Year + "\nCountry: " + JSON.parse(body).Country +
+	    "\nLanguage: " + JSON.parse(body).Language)
+
 	      function fnRatings() {
-	        var ratings = JSON.parse(body).Ratings
+	        var ratings = JSON.parse(body).Ratings;
 
 	       for (i = 0; i < ratings.length; i++) {
 	        if (JSON.parse(body).Ratings[i].Source === "Rotten Tomatoes") {
 	          var x = JSON.parse(body).Ratings[i].Value;
-	          //console.log(x);
-	          console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[i].Value)
+	          
+	          console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[i].Value);
+	          fs.appendFileSync("log.txt", "Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[i].Value);
 	          
 	         } 
 
 	        }
 	        if (x === undefined) {
 	          console.log("Rotten Tomatoes Rating: None");
+	          fs.appendFileSync("log.txt", "\nRotten Tomatoes Rating: None");
 	        }
 	          
 	       }
 
-	   //fnRatings();
-	   		//console.log(response)
-	   		//console.log(userInput)
+	   fnRatings();
+	   fs.appendFileSync("log.txt", "\n====================== LOG ENTRY COMPLETE ==================\n")	   	
 	  }
 
 
@@ -147,16 +161,27 @@ function spotifyThis() {
 	  spotify
 	    .search({ type: 'track', query: "The Sign", limit: 10 })
 	    .then(function(response) {
-	      //console.log(response.tracks);
+
+	     fs.appendFileSync("log.txt", "\n====================== LOG ENTRY START ====================\n")	
+
 	     var nameArtist = response.tracks.items[8].artists[0].name;
 	     var nameSong = response.tracks.items[8].name;
 	     var nameAlbum = response.tracks.items[8].album.name;
 	     var namePreviewURL = response.tracks.items[8].preview_url;
+
 	     console.log("Name of Song: " + nameSong);
 	     console.log("Name of Band/Artist: " + nameArtist);
 	     console.log("Album Name: " + nameAlbum);
 	     console.log("Preview URL: " + namePreviewURL);
-	     //console.log(response.tracks.items[0]);
+
+	     fs.appendFileSync("log.txt", "Name of Song: " + nameSong + "\n");
+	     fs.appendFileSync("log.txt", "Name of Band/Artist: " + nameArtist + "\n");
+	     fs.appendFileSync("log.txt", "Album Name: " + nameAlbum + "\n");
+	     fs.appendFileSync("log.txt", "Preview URL: " + namePreviewURL + "\n");
+
+
+	     fs.appendFileSync("log.txt", "===================== LOG ENTRY COMPLETE ==================\n")
+	     
 	    })
 	    .catch(function(err) {
 	      console.log(err);
@@ -171,7 +196,9 @@ function spotifyThis() {
 	  spotify
 	    .search({ type: 'track', query: userInput, limit: 1 })
 	    .then(function(response) {
-	      //console.log(response.tracks);
+	    
+	    fs.appendFileSync("log.txt", "\n====================== LOG ENTRY START ====================\n")
+
 	     var nameArtist = response.tracks.items[0].artists[0].name;
 	     var nameSong = response.tracks.items[0].name;
 	     var nameAlbum = response.tracks.items[0].album.name;
@@ -180,9 +207,17 @@ function spotifyThis() {
 	     console.log("Name of Band/Artist: " + nameArtist);
 	     console.log("Album Name: " + nameAlbum);
 	     console.log("Preview URL: " + namePreviewURL);
+
+	     fs.appendFileSync("log.txt", "Name of Song: " + nameSong + "\n");
+	     fs.appendFileSync("log.txt", "Name of Band/Artist: " + nameArtist + "\n");
+	     fs.appendFileSync("log.txt", "Album Name: " + nameAlbum + "\n");
+	     fs.appendFileSync("log.txt", "Preview URL: " + namePreviewURL + "\n");
+
+
+	     fs.appendFileSync("log.txt", "====================== LOG ENTRY COMPLETE ==================\n")
 	    })
 	    .catch(function(err) {
-	      console.log(err);
+	    console.log(err);
 	    });
 	}
 }
